@@ -10,6 +10,7 @@ import { WebApiService } from './service/web-api.service';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { importProvidersFrom } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; // Import NgbModule here
 
 
 
@@ -23,5 +24,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch()), // Provides the HttpClient functionality
     HttpProviderService, // Provide your services here
     WebApiService, provideAnimationsAsync(), // Provide your WebApiService here
+    importProvidersFrom(NgbModule) // Import NgbModule globally here if needed
+
   ]
 };

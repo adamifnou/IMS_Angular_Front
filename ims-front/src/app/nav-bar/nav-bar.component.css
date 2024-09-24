@@ -1,0 +1,20 @@
+#myLogo{
+    filter: invert(100%) sepia(100%) saturate(100%) hue-rotate(87deg) brightness(119%) contrast(119%);
+    margin-left: 15px;
+   
+}
+#myLogo:hover{
+    filter: invert(150%) sepia(150%) saturate(140%) hue-rotate(87deg) brightness(150%) contrast(119%);
+    margin-left: 15px;
+    cursor: hand;
+}
+#navbarSupportedContent{
+    margin-left: 2%;
+    
+}
+#navbarDropdown{
+    max-width: 40%;
+    /* position to left */
+    position: absolute;
+    right: 15px;
+}
