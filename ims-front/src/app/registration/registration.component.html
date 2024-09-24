@@ -1,0 +1,38 @@
+<div class="container px-5 mt-5">
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <div class="form-floating mb-3">
+      <input class="form-control" id="name" formControlName="name" type="text" placeholder="Name" data-sb-validations="required,email"/>
+      <label for="name" >Name</label></div>
+      <div *ngIf="registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched">
+        Name is required
+      </div>
+    <div class="form-floating mb-3">
+      <input id="email" formControlName="email" type="email" class="form-control" placeholder="Email Address" data-sb-validations="required,email" />
+      <label for="email" class="form-label">Email</label>  
+      <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched">
+        Email is required
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="input-group">
+        <input id="password" [type]="hidePassword ? 'password' : 'text'" formControlName="password" class="form-control" placeholder="Password" data-sb-validations="required"  />       
+        <button type="button" (click)="generatePassword()" class="btn btn-outline-secondary btn-lg">
+          <i class="bi bi-key"></i>
+        </button>
+        <button type="button" (click)="togglePasswordVisibility()" class="btn btn-outline-secondary btn-lg">
+          <i class="bi" [ngClass]="hidePassword ? 'bi-eye' : 'bi-eye-slash'"></i>
+        </button>
+      </div>
+      <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched">
+        Password is required
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success w-100" >Register</button>
+  </form>
+</div>
+<div *ngIf="showPopup" id="popup-overlay">
+  <div id="my-pop-content">
+    <button type="button" id="closing-pop-btn" class="btn-close text-danger" aria-label="Close" (click)="closePopup()">&times;</button>
+    <span>{{popUpMessage}}</span>
+  </div>
+</div>

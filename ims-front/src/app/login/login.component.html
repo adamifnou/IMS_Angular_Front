@@ -1,0 +1,19 @@
+<div class="container px-5 my-5">
+    <form id="contactForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-floating mb-3">
+            <input class="form-control" id="emailAddress" type="email" placeholder="Email Address" data-sb-validations="required,email" />
+            <label for="emailAddress">Email Address</label>
+        </div>
+        <div class="form-floating mb-3">
+            <div class="input-group">
+                <input class="form-control"  [type]="hidePassword ? 'password' : 'text'" id="password" type="password" placeholder="Password" data-sb-validations="required" />
+                <button type="button" (click)="togglePasswordVisibility()" class="btn btn-outline-secondary btn-lg">
+                    <i class="bi" [ngClass]="hidePassword ? 'bi-eye' : 'bi-eye-slash'"></i>
+                </button>
+            </div>
+        </div>
+        <div class="d-grid">
+            <button class="btn btn-success w-200" id="submitButton" type="submit">Login</button>
+        </div>
+    </form>
+</div>
