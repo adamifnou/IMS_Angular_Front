@@ -6,12 +6,15 @@ import { LoginUser, RegisterUser } from '../interface/user';
 @Injectable({
   providedIn: 'root'
 })
+
 export class HttpProviderService {
   private baseUrl = "http://localhost:8080";
   private httpLinks = {
     userRegister: this.baseUrl + "/auth/addNewUser",
     adminRegister: this.baseUrl + "/auth/addNewAdmin",
-    login: this.baseUrl + "/auth/login"  
+    login: this.baseUrl + "/auth/login",
+
+    getAllMaterials: this.baseUrl + "/userAPI/material/all",
   };
 
   constructor(private webApiService: WebApiService) {}
@@ -21,5 +24,8 @@ export class HttpProviderService {
   }
   loginUser(user:LoginUser): Observable<any> {
     return this.webApiService.post(this.httpLinks.login, user);
+  }
+  getAllMaterials(token:String): Observable<any> {
+    return this.webApiService.get(this.httpLinks.getAllMaterials,  null, token);
   }
 }

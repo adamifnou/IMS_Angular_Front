@@ -15,7 +15,7 @@ export class WebApiService {
         'Cache-Control': 'no-cache',
         Pragma: 'no-cache',
       }),
-      observe: 'response' as 'body',
+      observe: 'response' as const,
     };
   }
   post(
@@ -24,21 +24,22 @@ export class WebApiService {
   ): Observable<any> {
     return this.httpClient.post(url, body, this.httpOptions);
   }
-  get(url: string, httpOptionsParams?: any): Observable<any> {
-    const httpOptions = {
+  get(url: string, httpOptionsParams?: any, token?:String): Observable<any> {
+    let httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Cache-Control': 'no-cache',
         Pragma: 'no-cache',
+        Authorization: 'Bearer ' + (token || ''),      
       }),
-      observe: 'response' as 'body',
+      withCredentials: true,
+      observe: 'response' as const,
       params: {},
     };
 
     if (httpOptionsParams) {
       httpOptions.params = httpOptionsParams;
     }
-
     return this.httpClient.get(url, httpOptions);
   }
 

@@ -1,0 +1,17 @@
+.table-container {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .form-control {
+    margin-bottom: 1rem;
+  }
+  
+  .pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  

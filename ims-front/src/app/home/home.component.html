@@ -1,0 +1,17 @@
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+    <li [ngbNavItem]="1">
+      <button ngbNavLink>Materials List</button>
+      <ng-template ngbNavContent>
+        <app-materials-table *ngIf="materials.length > 0" [dataToShow]="materials" [columnsToShow]="columnsToShow"></app-materials-table>
+        <div *ngIf="materials.length === 0">Loading materials...</div>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="2">
+      <button ngbNavLink>Add New Material</button>
+      <ng-template ngbNavContent>
+        <!-- Add New Material Content -->
+      </ng-template>
+    </li>
+  </ul>
+  
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>

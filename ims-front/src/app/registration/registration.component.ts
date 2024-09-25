@@ -18,7 +18,7 @@ export class RegistrationComponent implements OnInit {
   hidePassword = true;
   showPopup = false;
   popUpMessage = '';
-
+  
 
 
   constructor(private fb: FormBuilder, 
@@ -39,7 +39,7 @@ export class RegistrationComponent implements OnInit {
         response => {
           this.registrationForm.reset();
           this.showPopup = true;
-          this.popUpMessage = response.body.message;
+          this.popUpMessage = response.body.message;          
         },
         error => {
           this.registrationForm.reset();
@@ -52,7 +52,9 @@ export class RegistrationComponent implements OnInit {
   closePopup() {
 
     this.showPopup = false;
-
+    if (this.popUpMessage.includes('Added')) {
+      window.location.href = '/login';
+    }
   }
   generatePassword(): void {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';

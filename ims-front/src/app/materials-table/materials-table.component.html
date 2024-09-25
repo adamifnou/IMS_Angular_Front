@@ -1,0 +1,39 @@
+<div class="table-container">
+    <!-- Search input -->
+    <input
+      type="text"
+      placeholder="Search..."
+      [(ngModel)]="searchQuery"
+      (ngModelChange)="onSearch($event)"
+      class="form-control mb-3"
+    />
+  
+    <!-- Table with Bootstrap classes -->
+    <table class="table table-striped table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th *ngFor="let column of columnsToShow">{{ column | titlecase }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of paginatedData">
+          <td *ngFor="let column of columnsToShow">{{ row[column] }}</td>
+        </tr>
+        <tr *ngIf="paginatedData.length === 0">
+          <td [attr.colspan]="columnsToShow.length">No data found</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Pagination using ng-bootstrap -->
+    <ngb-pagination
+      [collectionSize]="getFilteredData().length"
+      [(page)]="currentPage"
+      [pageSize]="itemsPerPage"
+      (pageChange)="updatePaginatedData()"
+      aria-label="Pagination"
+      class="justify-content-center"
+    >
+    </ngb-pagination>
+  </div>
+  
